@@ -1,5 +1,5 @@
 # 任 务 二
-这次的任务是使用 `Markdown` 语法记录 Git 的一些基础操作和我如何完成任务一的。
+这次的任务是使用 `Markdown` 语法记录 Git 的一些基础操作:从安装到仓库文件操作
 ***
 ## Git 安装：
 我是在Windows上安装的，直接在Git官网直接 [下载安装程序](https://git-scm.com/downloads)，如果网速慢的话可以下载 [国内镜像](https://pan.baidu.com/s/1kU5OCOB#list/path=%2Fpub%2Fgit)，然后按默认选项安装即可。  
@@ -47,6 +47,7 @@
 
     <font color=FF0000 size=2 face="黑体">后面的命令展现就步展现提示部分，仅展现代码部分了。具体可以看</font>[廖雪峰的 Git 教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)    
       
+### 其余代码：
 * 查看结果: `git status`  
 git status  命令可以让我们时刻掌握仓库的当前状态。
 * 查看不同：`git diff`
@@ -56,4 +57,11 @@ git status  命令可以让我们时刻掌握仓库的当前状态。
 <font color=ff0000 size=2 face="黑体">如果输出信息太多的话可以加上 `--pretty=online`</font>  
 * 版本回溯：`git reset --hard commit_id`  
 回到指定 commit_id 的版本
+>### 工作区和暂存区:
+> 
+> 在我们的电脑里能看到的目录，比如我创建的 gxgk_repository 文件夹就是一个工作区。  
+在工作区有一个隐藏目录 `.git`，这个不算工作区，而是 Git 的版本库。Git 的版本库里存了很多东西，其中重要的就是称为 stage（或者叫index）的暂存区，还有 Git 为我们自动创建的第一个分支 `master` ,以及只想 `mastser`的一个指针叫 `HEAD`。  
+添加文件的工作原理：`git add` 将要提交的所有修改放到暂存区（Stage），然后，执行 `git commit` 就可以一次性把暂存区的所有修改提交到分支。  
+* 丢弃工作区的修改：`git checkout -- file`
+* 丢弃暂存区的修改：`git reset HEAD <file>`
     
