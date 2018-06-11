@@ -64,4 +64,10 @@ git status  命令可以让我们时刻掌握仓库的当前状态。
 添加文件的工作原理：`git add` 将要提交的所有修改放到暂存区（Stage），然后，执行 `git commit` 就可以一次性把暂存区的所有修改提交到分支。  
 * 丢弃工作区的修改：`git checkout -- file`
 * 丢弃暂存区的修改：`git reset HEAD <file>`
+* 删除文件：`git rm file`
+文件要包括文件后缀
+>特殊情况：
+如果你在文件管理器 `rm` 讲文件删除了，Git 知道你删除了文件，工作区和版本库就不一致了，用 `git status` 命令会告诉你哪些文件本删除了。然后你可以用 `git rm file` 删除，并且 `git commit`。也可以 `git checkout -- file` 把删除文件恢复到最新版本.  
+## 总结：
+总的来说，刚开始学习Git操作还是很简单的，对于 Git 的工作区和暂存区的工作原理的理解 是到目前为止学习Git的使用相对来说~~其实也挺简单的~~比较难的一个地方。继续努力！加油，<font color=ff0000 size=3 face="黑体">for myself !</font>
     
