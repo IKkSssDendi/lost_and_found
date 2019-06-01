@@ -1,0 +1,84 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.app-top{
+    background:#30799B;
+    height: 150px;
+    width: 100%;
+}
+.app-top-content{
+    position: absolute;
+    left: 45px;
+    top: 20px;
+    height: 100px;
+    width: 50%;
+}
+.app-top-image{
+    position: absolute;
+    left:0;
+    top:0;
+}
+.app-top-logo{
+    height: 100px;
+    width: 100px;
+}
+.app-top-button-title{
+    position: absolute;
+    left:120px;
+    top: 0;
+}
+.app-top-title{
+    height: 50px;
+    width: 150px;
+}
+.top-title{
+    color: #ffffff;
+    font-size: 20px;
+}
+.app-top-button{
+    height: 50px;
+    width: 150px;
+}
+.top-button{
+    background-color: #f44336;
+    border-radius: 12px;
+    border-color: #f44336;
+    color: white;
+    font-size: 18px;
+}
+.app-release-bar {
+    width: 100%;
+    height: 45px;
+    background: #cccccc;
+    border: solid #eeeeee 1px;
+}
+.app-release-title{
+    font-family: 华文细黑;
+    font-size: 20px;
+    text-align: left;
+    margin: 9px 0 0 15px;
+}
+.release-select{
+    margin: 15px 0px 5px 25px;
+}
+.app-conetnt-form-title{
+    margin: 15px 0px 5px 25px;
+}
+.app-conetnt-form-textbox{
+    margin: 5px 0px 15px 25px;
+}
+.app-content-button{
+    margin: 15px 0px 5px 25px;
+}
+.app-content-botton-button{
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+

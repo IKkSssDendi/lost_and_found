@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <title>失物招领</title>
+</head>
+<body>
+    <div class="app-top">
+        <div class="app-top-content">
+            <div class="app-top-image">
+                <img class="app-top-logo" src="{{url_for('static',filename='images/logo.jpg')}}"/>
+            </div>
+            <div class="app-top-button-title">
+                <div class="app-top-title">
+                    <h3 class="top-title">失物招领信息墙</h3>
+                </div>
+                <div class="app-top-button">
+                    {% block button %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>
