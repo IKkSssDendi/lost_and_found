@@ -21,7 +21,7 @@ def index():
                                    openid=openid,
                                    nickname=nickname)
         url = quote(request.url)
-        return redirect(config.DevConfig.CODE_URL % (config.DevConfig.appID,url,'snsapi_base','None'))
+        return redirect(config.DevConfig.CODE_URL % (config.DevConfig.appID,url,'snsapi_base','STATE'))
 
 @lost_and_found.route('/release',methods=('GET','POST'))
 def release():
