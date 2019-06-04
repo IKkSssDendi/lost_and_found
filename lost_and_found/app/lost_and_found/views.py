@@ -9,7 +9,7 @@ from app import config
 @lost_and_found.route('/index',methods=('GET','POST'))
 def index():
     if request.method == 'GET':
-        code = request.args.get('coed')
+        code = request.args.get('code')
         openid = request.args.get('openid')
         nickname = request.args.get('nickname')
         sex = request.args.get('nickname')
