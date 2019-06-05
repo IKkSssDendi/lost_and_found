@@ -1,0 +1,36 @@
+{% extends 'lost_and_found_base.html' %}
+
+{% block button %}
+    <a class="top-button" href="{{url_for('lost_and_found.index', appid=appid , openid=openid ,sex=sex )}}" type="button">回到首页</a>
+{% endblock %}
+
+{% block content %}
+    <div class="app-content">
+    {% for data in info %}
+        <div class="cotent-list">
+            {% if data.lost_or_found == 'found' %}
+                <img class="content-img" src="{{url_for('static',filename='images/found.jpg')}}">
+            {% else %}
+                <img class="content-img" src="{{url_for('static',filename='images/lost.jpg')}}">
+            {% endif %}
+            <div class="app-content-text">
+                <div class="article_and_time">
+                    <div class="article_name">
+                        <a class="article">{{ data.article }}</a>
+                    </div>
+                    <div class="time">
+                        <a class="time">{{ data.create_time_str }}</a>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <a class="text">{{ data.content }}</a>
+                </div>
+                <div class="article_image">
+
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

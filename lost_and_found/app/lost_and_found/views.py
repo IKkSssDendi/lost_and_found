@@ -1,10 +1,11 @@
 from . import lost_and_found
 from flask import request,render_template,jsonify,redirect
-from .models import LostAndFoundState,LostAndFound
+from .models import LostAndFoundState,LostAndFound,Admin
 from urllib.parse import quote
 from ..wx import wx_models
-import datetime
 from app import config,db
+import time
+import datetime
 
 @lost_and_found.route('/index',methods=('GET','POST'))
 def index():
@@ -67,6 +68,22 @@ def release():
         return jsonify({'state': 200, 'msg': "提交成功，等待管理员审核"})
 
     return render_template('release.html')
+
+@lost_and_found.route('/admin',methods=('GET','POST'))
+def admin():
+    if request.method == 'GET':
+        openid = request.args.get('openid')
+        admin = Admin.query.filter_by(user_id=openid).first()
+        if admin:
+            info = LostAndFound.query.filter_by(state=0).all()
+            return render_template('admin.html',info=info,openid=openid)
+        else:
+            return
+
+
+
+
+
 
 
 

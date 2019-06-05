@@ -17,8 +17,8 @@ class LostAndFoundState():
 
 class LostAndFound(db.Model):
     __tablename__ = 'LostAndFound'
-
-    user_id = db.Column(db.String(32),nullable=False,primary_key=True,index=True)
+    id = db.Column(db.Integer,nullable=False,primary_key=True,autoincrement=True)
+    user_id = db.Column(db.String(32),nullable=False,index=True)
     lost_or_found = db.Column(db.String(5),nullable=False)
     article = db.Column(db.String(15),nullable=False)
     send_name = db.Column(db.String(10), nullable=False)
@@ -124,5 +124,10 @@ class LostAndFound(db.Model):
         cls.get_by_id(id, force_reload=True)
 
 
+class Admin(db.Model):
+    user_id = db.Column(db.String(32),nullable=False,primary_key=True,index=True)
+    admin_name = db.Column(db.String(10), nullable=False)
 
-        
+    def __init__(self,user_id,admin_name):
+        self.user_id = user_id
+        self.admin_name = admin_name

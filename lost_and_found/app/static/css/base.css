@@ -81,4 +81,11 @@ body{
     display: inline-block;
     font-size: 16px;
 }
+.app-content{
+    background: #E8EFF0;
+}
+.content-img{
+    height: 30px;
+    width: 30px;
+}
 
