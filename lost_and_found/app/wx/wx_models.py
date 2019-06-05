@@ -16,9 +16,10 @@ def get_wx_permission(code):
         logging.warning(u'获取授权失败:%s' % e)
         return {}
     else:
-        content = json.loads(str(r.content))
+        content = str(r.content,encoding='utf8')
+        content = json.loads(content)
         access_token = content['access_token']
-        expries_in = content['expries_in']
+        expires_in = content['expires_in']
         refresh_token = content['refresh_token']
         openid = content['openid']
         scope = content['scope']
@@ -51,7 +52,7 @@ def get_base_access_token():
 def get_user_data(access_token,openid,lang='zh_CN'):
     url = config.DevConfig.GET_USER_DATA_URL % (access_token,openid,lang)
     r = requests.get(url)
-    content = json.loads(str(r.content))
+    content = json.loads(str(r.content,encoding='utf8'))
     nickname = content['nickname']
     if content['sex'] == '1':
         sex = '男性'

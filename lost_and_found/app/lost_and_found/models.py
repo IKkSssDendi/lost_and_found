@@ -1,6 +1,8 @@
 from app import db
 import datetime
 import time
+from sqlalchemy import text
+from sqlalchemy.sql import func
 
 
 class LostAndFoundState():
@@ -16,29 +18,25 @@ class LostAndFoundState():
 class LostAndFound(db.Model):
     __tablename__ = 'LostAndFound'
 
-    id = db.Column(db.String(100),nullable=False,primary_key=True,autoincrement=True)
-    user_id = db.Column(db.String(32),nullable=False,index=True)
+    user_id = db.Column(db.String(32),nullable=False,primary_key=True,index=True)
     lost_or_found = db.Column(db.String(5),nullable=False)
     article = db.Column(db.String(15),nullable=False)
     send_name = db.Column(db.String(10), nullable=False)
     receive_name = db.Column(db.String(10), nullable=False)
     content = db.Column(db.String(500),nullable=False)
-    is_show_head = db.Column(db.Integer,default=0,nullable=False)
-    create_time = db.Column(db.DateTime, default=datetime.datetime.now)
-    modify_time = db.Column(db.DateTime, default=datetime.datetime.now)
-    deleted = db.Column(db.Integer, default=0, nullable=False)
-    state = db.Column(db.Integer, default=0, nullable=False)
+    is_show_head = db.Column(db.Integer,server_default=text('False'),nullable=False)
+    create_time = db.Column(db.DateTime, server_default=func.now())
+    modify_time = db.Column(db.DateTime, server_default=func.now())
+    deleted = db.Column(db.Integer, server_default=text('False'),nullable=False)
+    state = db.Column(db.Integer, server_default=text('False'),nullable=False)
 
-    def __init__(self,user_id,lost_or_found,article,send_name,content,is_show_head,create_time,modify_time,deleted):
+    def __init__(self,user_id,lost_or_found,article,send_name,content,is_show_head):
         self.user_id = user_id
         self.lost_or_found = lost_or_found
         self.article = article
-        self.send_name =send_name
+        self.send_name = send_name
         self.content = content
         self.is_show_head = is_show_head
-        self.create_time = create_time
-        self.modify_time = modify_time
-        self.deleted = deleted
 
     @property
     def create_time_str(self):

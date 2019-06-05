@@ -1,2 +1,5 @@
 {% extends 'lost_and_found_base.html' %}
 
+{% block button %}
+    <a class="top-button" href="{{url_for('lost_and_found.release', appid=appid , nickname=nickname , openid=openid )}}" type="button">我要发布</a>
+{% endblock %}

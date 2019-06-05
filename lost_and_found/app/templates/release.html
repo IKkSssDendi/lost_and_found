@@ -1,7 +1,7 @@
 {% extends 'lost_and_found_base.html' %}
 
 {% block button %}
-    <button class="top-button" type="button">回到首页</button>
+    <a class="top-button" href="{{url_for('lost_and_found.index', appid=appid , openid=openid ,sex=sex )}}" type="button">回到首页</a>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
             <label class="app-conetnt-form-title" for="receive_name">接收者姓名</label><br>
             <input class="app-conetnt-form-textbox" name="receive_name" id="receive_name" maxlength="10" style="overflow:scroll;height:30px;width: 90%" placeholder="例如：拾取到遗失物品上物主的姓名" required><br>
             <label class="app-conetnt-form-title" for="send_name">发送者姓名</label><br>
-            <input class="app-conetnt-form-textbox" for="send_name" id="send_name" maxlength="10" style="overflow:scroll;height:30px;width: 90%"><br>
+            <input class="app-conetnt-form-textbox" name="send_name" id="send_name" maxlength="10" style="overflow:scroll;height:30px;width: 90%" required><br>
             <label class="app-conetnt-form-title" for="content">Msg</label><br>
             <textarea class="app-conetnt-form-textbox" name="content" id="content" placeholder="別忘了寫上聯繫方式" maxlength="500" style="overflow:hidden;height:200px;width: 90%"></textarea>
             <div class="app-content-button">
