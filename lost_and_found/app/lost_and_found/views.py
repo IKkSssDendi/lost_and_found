@@ -6,6 +6,7 @@ from ..wx import wx_models
 from app import config,db
 import time
 import datetime
+import ast
 
 @lost_and_found.route('/index',methods=('GET','POST'))
 def index():
@@ -38,8 +39,8 @@ def release():
     nickname = request.args.get('nickname')
     if request.method == 'POST':
         user_id = openid
-        article = request.form.get('article')
-        receive_name = request.form.get('receive_name')
+        article = request.form.get('article_name')
+        receive_name = request.form.get('receive_name','None')
         send_name = request.form.get('send_name')
         content = request.form.get('content')
         lost_or_found = request.form.get('status')
@@ -74,11 +75,28 @@ def admin():
     if request.method == 'GET':
         openid = request.args.get('openid')
         admin = Admin.query.filter_by(user_id=openid).first()
-        if admin:
+        if openid:
+            msg = '您无权访问!!!!!'
+            return render_template('error.html',msg)
+        elif admin:
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html',info=info,openid=openid)
         else:
-            return
+            msg = '您无权访问!!!!!'
+            return render_template('error.html',msg)
+    if request.method == 'POST':
+        data = request.form.get('value')
+        data = ast.literal_eval(data)
+        id = data['id']
+        user_id = ['user_id']
+        if bool(data['state']):
+            state = LostAndFoundState.NORMAL
+            LostAndFound.set_state(id,state)
+            return jsonify({'state':200,'msg':'已通过'})
+        else:
+            state = LostAndFoundState.DELETE
+            LostAndFound.set_state(id,state)
+            return jsonify({'state':200,'msg':'已打回'})
 
 
 

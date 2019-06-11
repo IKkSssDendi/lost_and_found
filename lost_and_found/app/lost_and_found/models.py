@@ -22,7 +22,7 @@ class LostAndFound(db.Model):
     lost_or_found = db.Column(db.String(5),nullable=False)
     article = db.Column(db.String(15),nullable=False)
     send_name = db.Column(db.String(10), nullable=False)
-    receive_name = db.Column(db.String(10), nullable=False)
+    receive_name = db.Column(db.String(10), nullable=True)
     content = db.Column(db.String(500),nullable=False)
     is_show_head = db.Column(db.Integer,server_default=text('False'),nullable=False)
     create_time = db.Column(db.DateTime, server_default=func.now())
@@ -121,7 +121,6 @@ class LostAndFound(db.Model):
             info.modify_time = datetime.datetime.now()
             db.session.commit()
 
-        cls.get_by_id(id, force_reload=True)
 
 
 class Admin(db.Model):

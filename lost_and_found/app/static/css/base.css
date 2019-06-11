@@ -1,6 +1,7 @@
 body{
     padding: 0;
     margin: 0;
+    background-color:#F1F3F5 ;
 }
 .app-top{
     background:#30799B;
@@ -37,15 +38,21 @@ body{
     font-size: 20px;
 }
 .app-top-button{
-    height: 50px;
-    width: 150px;
+    height: 60px;
+    width: 80px;
 }
+/* release.html */
 .top-button{
     background-color: #f44336;
-    border-radius: 12px;
-    border-color: #f44336;
+    border-radius: 4px;
     color: white;
-    font-size: 10px;
+    font-size: 15px;
+    float: left;
+    font-family:宋体;
+    text-align: center;
+    display: inline-block;
+    text-decoration:none;
+    padding: 5px;
 }
 .app-release-bar {
     width: 100%;
@@ -62,8 +69,14 @@ body{
 .release-select{
     margin: 15px 0px 5px 25px;
 }
+.state{
+    font-family: 微软雅黑;
+    font-size: 16px;
+}
 .app-conetnt-form-title{
     margin: 15px 0px 5px 25px;
+    font-family: 微软雅黑;
+    font-size: 16px;
 }
 .app-conetnt-form-textbox{
     margin: 5px 0px 15px 25px;
@@ -81,11 +94,125 @@ body{
     display: inline-block;
     font-size: 16px;
 }
+.submitBtn{
+    float: left;
+    font-family:微软雅黑;
+    font-size: 20px;
+    background-color: #DDECEE;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px 0 0;
+    padding: 0 10px 0 10px;
+    border-radius: 12px;
+}
+.reset{
+    float: left;
+    font-family:微软雅黑;
+    font-size: 20px;
+    background-color: #DDECEE;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    border-radius: 12px;
+    padding: 0 5px 0 5px;
+}
+/* admin.html */
 .app-content{
-    background: #E8EFF0;
+    background-color: #F1F3F5;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+.content-list{
+    width: 100%;
+    float: left;
+    margin: 10px ;
+}
+.triangle{
+    background-color: #ffffff;
+    width:15px;
+    height:15px;
+    border:1px #DEE5E7;
+    border-style: none none solid solid;
+    transform:rotate(45deg);
+    position:relative;
+    left:-8px;
+    top:24px;
+}
+.app-content-img{
+    float: left;
+    width: 5%;
+    display: table-cell;
+    text-align: center;
 }
 .content-img{
-    height: 30px;
-    width: 30px;
-}
+    margin: 10px 0 0 0;
+    height: 45px;
+    width: 45px;
 
+}
+.app-content-text{
+    margin: 0 0 0 20px;
+    float: right;
+    width: 90%;
+}
+.article_and_time{
+    background-color: #ffffff;
+    float: left;
+    padding: 5px 5px 5px 5px;
+    width: 95%;
+    border:1px;
+    border-color: #DEE5E7;
+    border-style: solid solid none;
+}
+.article{
+    font-family: 宋体;
+    font-size: 16px;
+    float: left;
+    text-align: center;
+    margin: 0 0 0 5px;
+}
+.time{
+    font-family:微软雅黑;
+    font-size: 15px;
+    color: #98A6AD;
+    float: right;
+    text-align: center;
+}
+.content-text{
+    background-color: #ffffff;
+    float: left;
+    width: 95%;
+    padding: 5px;
+    border: 1px;
+    border-color: #DEE5E7;
+    border-style: solid solid none;
+}
+.text{
+    color: #838D93;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    margin: 0 0 0 5px;
+}
+.admin-button{
+    background-color: #ffffff;
+    float: left;
+    width: 95%;
+    padding: 5px;
+    border: 1px;
+    border-color: #DEE5E7;
+    border-style: solid solid ;
+}
+.submitResult{
+    float: right;
+    font-family:微软雅黑;
+    font-size: 15px;
+    background-color: #DDECEE;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    display: inline-block;
+    margin: 0 0 0 10px;
+    border-radius: 12px;
+}
