@@ -4,6 +4,39 @@
     <a class="top-button" href="{{url_for('lost_and_found.release', appid=appid , nickname=nickname , openid=openid )}}" type="button">我要发布</a>
 {% endblock %}
 
-{% block banner %}
+{% block content %}
+    <div class="app-content">
+    {% for data in info %}
+        <div class="content-list">
+            <div class="app-content-img">
+                {% if data.lost_or_found == 'found' %}
+                    <img class="content-img" src="{{url_for('static',filename='images/found.jpg')}}">
+                {% else %}
+                    <img class="content-img" src="{{url_for('static',filename='images/lost.jpg')}}">
+                {% endif %}
+            </div>
+            <div class="app-content-text">
+                <div class="triangle"></div>
+                <div class="article_and_time">
+                    <div class="article_name">
+                        <a class="article"><b>{{ data.article }}</b></a>
+                    </div>
+                    <div class="time">
+                        <a class="time">{{ data.create_time_str }}</a>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <a class="text">{{ data.content }}</a>
+                </div>
+                <div class="admin-button">
+                    {% if openid == data.user_id %}
+                        <button class="submitResult" formmethod="post" type="submit" name="result" value="{'state':0,'id':'{{data.id}}','user_id':'{{data.user_id}}'}">删除</button>
+                    {% endif %}
+                </div>
+            </div>
 
+        </div>
+    {% endfor %}
+    </div>
 {% endblock %}
+
