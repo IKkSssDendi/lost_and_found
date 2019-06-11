@@ -103,8 +103,6 @@ class LostAndFound(db.Model):
         if info.count() < max_show:
             # 如果今天的数据小于最多最大展示数量，则按时间排序显示全部
             info = cls.query.filter(cls.state >= state)
-        if like_sort:
-            info = info.order_by(cls.like_num.desc(), cls.id.desc())
         else:
             # 最多显示15天前数据
             info = info.filter(cls.create_time.between(now + datetime.timedelta(days=-15), now))\
