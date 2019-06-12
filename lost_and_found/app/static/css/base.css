@@ -144,7 +144,7 @@ body{
 }
 .app-content-img{
     float: left;
-    width: 5%;
+    width: 45px;
     display: table-cell;
     text-align: center;
 }
@@ -157,13 +157,13 @@ body{
 .app-content-text{
     margin: 0 0 0 15px;
     float: left;
-    width: 70%;
+    width: 80%;
 }
 .article_and_time{
     background-color: #ffffff;
     float: left;
     padding: 5px 5px 5px 5px;
-    width: 70%;
+    width: 85%;
     border:1px;
     border-color: #DEE5E7;
     border-style: solid solid none;
@@ -185,7 +185,7 @@ body{
 .content-text{
     background-color: #ffffff;
     float: left;
-    width: 70%;
+    width: 85%;
     padding: 5px;
     border: 1px;
     border-color: #DEE5E7;
@@ -200,7 +200,7 @@ body{
 .admin-button{
     background-color: #ffffff;
     float: left;
-    width: 70%;
+    width: 85%;
     padding: 5px;
     border: 1px;
     border-color: #DEE5E7;
