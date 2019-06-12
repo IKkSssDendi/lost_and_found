@@ -81,15 +81,20 @@ def release():
 
         return jsonify({'state': 200, 'msg': "提交成功，等待管理员审核"})
 
-    return render_template('release.html')
+    return render_template('release.html',openid=openid,appid = config.DevConfig.appID)
 
 
 @lost_and_found.route('/admin', methods=('GET', 'POST'))
 def admin():
     url = quote(request.url)
+    appid = config.DevConfig.appID
     if request.method == 'GET':
+        type = request.args.get('type')
         code = request.args.get('code')
         openid = request.args.get('openid')
+        if type == 'test':
+            info = LostAndFound.query.filter_by(state=0).all()
+            return render_template('admin.html', info=info, openid=openid)
         if code:
             url = wx_models.get_wx_permission(code)
             return redirect(url % ('admin'))
@@ -101,7 +106,7 @@ def admin():
 
         if Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
-            return render_template('admin.html', info=info, openid=openid)
+            return render_template('admin.html', info=info, openid=openid, appid=appid)
 
         else:
             return render_template('error.html')

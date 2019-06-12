@@ -1,7 +1,7 @@
 {% extends 'lost_and_found_base.html' %}
 
 {% block button %}
-<a class="top-button" href="{{url_for('lost_and_found.index', appid=appid , openid=openid ,sex=sex )}}" type="button">回到首页</a>
+<a class="top-button" href="{{url_for('lost_and_found.index', appid={{ appid }} , openid={{ openid }})}}" type="button">回到首页</a>
 {% endblock %}
 
 {% block content %}
