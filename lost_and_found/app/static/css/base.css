@@ -2,7 +2,8 @@ body{
     padding: 0;
     margin: 0;
     background-color:#F1F3F5 ;
-    overflow-x: hidden
+    overflow:hidden;
+    overflow-y:auto;
 }
 .app-top{
     background:#30799B;
