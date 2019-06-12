@@ -4,6 +4,8 @@ body{
     background-color:#F1F3F5 ;
     overflow:hidden;
     overflow-y:auto;
+    height: 100%;
+    width: 100%;
 }
 .app-top{
     background:#30799B;
