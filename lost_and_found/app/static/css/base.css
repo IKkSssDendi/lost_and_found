@@ -5,7 +5,7 @@ body{
     overflow:hidden;
     overflow-y:auto;
     height: 100%;
-    width: 90%;
+    width: 100%;
 }
 .app-top{
     background:#30799B;
