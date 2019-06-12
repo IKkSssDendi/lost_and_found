@@ -15,14 +15,14 @@ def index():
         nickname = request.args.get('nicknama')
         sex = request.args.get('nickname')
         url = quote(request.url)
+        if code:
+            url = wx_models.get_wx_permission(code)
+            return redirect(url)
         if openid is None:
             return redirect(
         config.DevConfig.CODE_URL %
         (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
-
-        if code:
-            url = wx_models.get_wx_permission(code)
-            return redirect(url)
+        
         if openid:
             info = LostAndFound.get_main_list(LostAndFoundState.NORMAL, 30)
             return render_template('index.html',
