@@ -14,6 +14,12 @@ def index():
         openid = request.args.get('openid')
         nickname = request.args.get('nicknama')
         sex = request.args.get('nickname')
+        url = quote(request.url)
+        if openid is None:
+            return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
+
         if code:
             url = wx_models.get_wx_permission(code)
             return redirect(url)
@@ -25,7 +31,6 @@ def index():
                                    sex=sex,
                                    appid=config.DevConfig.appID,
                                    info=info)
-        url = quote(request.url)
 
     if request.method == 'POST':
         data = request.form.get('value')
@@ -36,9 +41,6 @@ def index():
             LostAndFound.set_state(id, state)
             return jsonify({'state':200,'msg':'删除成功'})
 
-    return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
 
 @lost_and_found.route('/release', methods=('GET', 'POST'))
