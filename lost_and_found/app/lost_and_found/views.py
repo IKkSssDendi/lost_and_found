@@ -28,9 +28,6 @@ def index():
                                    appid=config.DevConfig.appID,
                                    info=info)
         url = quote(request.url)
-        return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
     if request.method == 'POST':
         data = request.form.get('value')
@@ -40,6 +37,10 @@ def index():
             state = LostAndFoundState.DELETE
             LostAndFound.set_state(id, state)
             return jsonify({'state':200,'msg':'删除成功'})
+
+    return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
 
 @lost_and_found.route('/release', methods=('GET', 'POST'))
@@ -86,6 +87,7 @@ def release():
 
 @lost_and_found.route('/admin', methods=('GET', 'POST'))
 def admin():
+    url = quote(request.url)
     if request.method == 'GET':
         openid = request.args.get('openid')
         admin = Admin.query.filter_by(user_id=openid).first()
@@ -111,3 +113,7 @@ def admin():
             state = LostAndFoundState.DELETE
             LostAndFound.set_state(id, state)
             return jsonify({'state': 200, 'msg': '已打回'})
+
+    return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
