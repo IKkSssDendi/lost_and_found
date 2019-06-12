@@ -52,7 +52,7 @@ $(function () {
                         weui.toast(res.msg, 3000);
                         //成功跳转
                         setTimeout(function () {
-                            $(".top-button")[0].click();
+                            location.reload();
                         }, 3000);
                         // 提交成功删除文本内容，防止重复提交
                         $('.reset').trigger("click");
