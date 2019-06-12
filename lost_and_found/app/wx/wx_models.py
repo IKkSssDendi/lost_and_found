@@ -24,7 +24,7 @@ def get_wx_permission(code):
         openid = content['openid']
         scope = content['scope']
         data = get_user_data(access_token,openid)
-        url = '/LostAndFound/index?openid=%s&nicknama=%s&sex=%s' % (openid,data['nickname'],data['sex'])
+        url = '/LostAndFound/%s' + '?openid=%s&nicknama=%s&sex=%s' % (openid,data['nickname'],data['sex'])
 
         return url
 

@@ -17,7 +17,7 @@ def index():
         url = quote(request.url)
         if code:
             url = wx_models.get_wx_permission(code)
-            return redirect(url)
+            return redirect(url % ('index'))
         if openid is None:
             return redirect(
         config.DevConfig.CODE_URL %
@@ -92,7 +92,7 @@ def admin():
         openid = request.args.get('openid')
         if code:
             url = wx_models.get_wx_permission(code)
-            return redirect(url)
+            return redirect(url % ('admin'))
 
         if openid is None:
             return redirect(
