@@ -86,14 +86,21 @@ def release():
 def admin():
     url = quote(request.url)
     if request.method == 'GET':
+        code = request.args.get('code')
         openid = request.args.get('openid')
+        if code:
+            url = wx_models.get_wx_permission(code)
+            return redirect(url)
+
         if openid is None:
             return redirect(
         config.DevConfig.CODE_URL %
         (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
+
         elif Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid)
+
         else:
             return render_template('error.html')
     if request.method == 'POST':
