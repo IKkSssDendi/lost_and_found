@@ -92,11 +92,6 @@ def admin():
             url = wx_models.get_wx_permission(code)
             return redirect(url)
 
-        if openid is None:
-            return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
-
         elif Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid)
@@ -116,4 +111,8 @@ def admin():
             state = LostAndFoundState.DELETE
             LostAndFound.set_state(id, state)
             return jsonify({'state': 200, 'msg': '已打回'})
+
+    return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
