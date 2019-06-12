@@ -4,8 +4,6 @@ from .models import LostAndFoundState, LostAndFound, Admin
 from urllib.parse import quote
 from ..wx import wx_models
 from app import config, db
-import time
-import datetime
 import ast
 
 
@@ -48,8 +46,7 @@ def release():
     openid = request.args.get('openid')
     nickname = request.args.get('nickname')
     if openid is None:
-        msg = '您无权访问!!!!!'
-        return render_template('error.html', msg)
+        return render_template('error.html')
 
     if request.method == 'POST':
         user_id = openid
@@ -90,16 +87,15 @@ def admin():
     url = quote(request.url)
     if request.method == 'GET':
         openid = request.args.get('openid')
-        admin = Admin.query.filter_by(user_id=openid).first()
         if openid is None:
-            msg = '您无权访问!!!!!'
-            return render_template('error.html', msg)
-        elif admin:
+            return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
+        elif Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid)
         else:
-            msg = '您无权访问!!!!!'
-            return render_template('error.html', msg)
+            return render_template('error.html')
     if request.method == 'POST':
         data = request.form.get('value')
         data = ast.literal_eval(data)
@@ -114,6 +110,3 @@ def admin():
             LostAndFound.set_state(id, state)
             return jsonify({'state': 200, 'msg': '已打回'})
 
-    return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
