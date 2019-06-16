@@ -96,7 +96,7 @@ def admin():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid)
         if code:
-            url = wx_models.get_wx_permission(code)
+            url = wx_models.get_wx_permission(code,url)
             return redirect(url % ('admin'))
 
         if openid is None:
