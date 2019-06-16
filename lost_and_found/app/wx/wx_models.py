@@ -18,10 +18,6 @@ def get_wx_permission(code,url):
     else:
         content = str(r.content,encoding='utf8')
         content = json.loads(content)
-        access_token = content['errcode']
-        msg = content['errmsg']
-        print(access_token)
-        print(msg)
         access_token = content['access_token']
         expires_in = content['expires_in']
         refresh_token = content['refresh_token']
