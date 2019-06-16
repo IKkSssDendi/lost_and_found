@@ -3,7 +3,7 @@ from app import config
 import json
 import logging
 
-def get_wx_permission(code):
+def get_wx_permission(code,url):
     url = config.DevConfig.ACCESS_TOKEN_URL % (
         config.DevConfig.appID,
         config.DevConfig.appSerect,
@@ -16,16 +16,18 @@ def get_wx_permission(code):
         logging.warning(u'获取授权失败:%s' % e)
         return {}
     else:
-        content = str(r.content,encoding='utf8')
-        content = json.loads(content)
-        access_token = content['access_token']
-        expires_in = content['expires_in']
-        refresh_token = content['refresh_token']
-        openid = content['openid']
-        scope = content['scope']
-        data = get_user_data(access_token,openid)
-        url = '/LostAndFound/%s' + '?openid=%s&nicknama=%s&sex=%s' % (openid,data['nickname'],data['sex'])
-
+        try:
+            content = str(r.content,encoding='utf8')
+            content = json.loads(content)
+            access_token = content['access_token']
+            expires_in = content['expires_in']
+            refresh_token = content['refresh_token']
+            openid = content['openid']
+            scope = content['scope']
+            data = get_user_data(access_token,openid)
+            url = '/LostAndFound/%s' + '?openid=%s&nicknama=%s&sex=%s' % (openid,data['nickname'],data['sex'])
+        except:
+            url = config.DevConfig.CODE_URL % (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE')
         return url
 
 def get_base_access_token():
