@@ -18,6 +18,12 @@ def index():
         if code:
             url = wx_models.get_wx_permission(code)
             return redirect(url % ('index'))
+
+        if openid is None:
+            return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
+
         if openid:
             info = LostAndFound.get_main_list(LostAndFoundState.NORMAL, 30)
             return render_template('index.html',
@@ -35,10 +41,6 @@ def index():
             state = LostAndFoundState.DELETE
             LostAndFound.set_state(id, state)
             return jsonify({'state':200,'msg':'删除成功'})
-
-    return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
 
 
@@ -98,6 +100,11 @@ def admin():
             url = wx_models.get_wx_permission(code,url)
             return redirect(url % ('admin'))
 
+        if openid is None:
+            return redirect(
+        config.DevConfig.CODE_URL %
+        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
+
         if Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid, appid=appid)
@@ -117,9 +124,5 @@ def admin():
             state = LostAndFoundState.DELETE
             LostAndFound.set_state(id, state)
             return jsonify({'state': 200, 'msg': '已打回'})
-
-    return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
 
