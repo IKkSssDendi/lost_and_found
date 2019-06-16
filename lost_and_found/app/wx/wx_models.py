@@ -3,7 +3,7 @@ from app import config
 import json
 import logging
 
-def get_wx_permission(code,url):
+def get_wx_permission(code):
     url = config.DevConfig.ACCESS_TOKEN_URL % (
         config.DevConfig.appID,
         config.DevConfig.appSerect,
