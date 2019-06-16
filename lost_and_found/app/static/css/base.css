@@ -83,7 +83,7 @@ body{
     font-size: 16px;
 }
 .app-conetnt-form-textbox{
-    margin: 15px;
+    margin: 15px auto;
     border: 1px solid #F1F2F3;
 }
 .app-content-button{
