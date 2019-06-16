@@ -52,10 +52,10 @@ $(function () {
                         weui.toast(res.msg, 3000);
                         //成功跳转
                         setTimeout(function () {
-                            $('top-button').trigger("click");
+                            $('.reset').trigger("click");
                         }, 3000);
+                        lock = true;
                         // 提交成功删除文本内容，防止重复提交
-                        $('.reset').trigger("click");
                     } else {
                         // 失败，显示后端信息
                         weui.alert(res.msg);
