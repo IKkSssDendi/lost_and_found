@@ -17,6 +17,7 @@ def index():
         url = quote(request.url)
         if openid:
             info = LostAndFound.get_main_list(LostAndFoundState.NORMAL, 30)
+            info = reversed(info)
             return render_template('index.html',
                                    openid=openid,
                                    nickname=nickname,
@@ -107,6 +108,7 @@ def admin():
 
         if openid and Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
+            info = reversed(info)
             return render_template('admin.html', info=info, openid=openid, appid=appid)
 
         else:
