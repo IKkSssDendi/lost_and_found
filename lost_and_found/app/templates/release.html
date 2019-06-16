@@ -13,8 +13,10 @@
 <div class="app-content">
     <!--<form method="POST">-->
         <div class="release-select">
-            <input class="state" type="radio" name="status" value="lost">我丢东西啦<br>
-            <input class="state" type="radio" name="status" value="found">我捡到东西啦<br>
+            <input id="lost"  class="state" type="radio" name="status" value="lost">
+            <label for = "lost">&nbsp;&nbsp;我丢东西啦</label><br>
+            <input id = "found" class="state" type="radio" name="status" value="found">
+            <label for = "found">&nbsp;&nbsp;我捡到东西啦<br>
         </div>
         <label class="app-conetnt-form-title" for="article">物品名称</label><br>
         <input class="app-conetnt-form-textbox" name="article" id="article" maxlength="15"
@@ -33,6 +35,10 @@
             <input type="reset" name="reset-button" id="reset-button" class="reset" value="重置">
         </div>
     <!--</form>-->
+</div>
+
+<div class = "app-footter">
+
 </div>
 {% endblock %}
 {% block footer %}
