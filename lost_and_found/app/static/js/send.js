@@ -77,3 +77,11 @@ $(function () {
 
     });
 });
+
+$(function(){
+    $('.reset').click(function () {
+        $('#lost').checked=false;
+        $('#found').checked=false;
+        $('.app-conetnt-form-textbox').val("");
+    });
+})
