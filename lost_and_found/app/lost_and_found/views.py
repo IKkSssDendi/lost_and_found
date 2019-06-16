@@ -15,6 +15,14 @@ def index():
         nickname = request.args.get('nicknama')
         sex = request.args.get('nickname')
         url = quote(request.url)
+        if openid:
+            info = LostAndFound.get_main_list(LostAndFoundState.NORMAL, 30)
+            return render_template('index.html',
+                                   openid=openid,
+                                   nickname=nickname,
+                                   sex=sex,
+                                   appid=config.DevConfig.appID,
+                                   info=info)
         if code:
             url = wx_models.get_wx_permission(code)
             return redirect(url % ('index'))
@@ -24,14 +32,6 @@ def index():
         config.DevConfig.CODE_URL %
         (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
-        if openid:
-            info = LostAndFound.get_main_list(LostAndFoundState.NORMAL, 30)
-            return render_template('index.html',
-                                   openid=openid,
-                                   nickname=nickname,
-                                   sex=sex,
-                                   appid=config.DevConfig.appID,
-                                   info=info)
 
     if request.method == 'POST':
         data = request.form.get('value')
@@ -105,7 +105,7 @@ def admin():
         config.DevConfig.CODE_URL %
         (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
 
-        if Admin.query.filter_by(user_id=openid).first():
+        if openid and Admin.query.filter_by(user_id=openid).first():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid, appid=appid)
 
