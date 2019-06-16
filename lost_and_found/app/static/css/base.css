@@ -85,6 +85,8 @@ body{
 .app-conetnt-form-textbox{
     margin: 15px auto;
     border: 1px solid #F1F2F3;
+    width: 80%;
+
 }
 .app-content-button{
     margin: 15px 0px 5px 25px;
