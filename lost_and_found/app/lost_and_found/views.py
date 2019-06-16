@@ -95,10 +95,6 @@ def admin():
         if type == 'test':
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid)
-        if openid is None:
-            return redirect(
-        config.DevConfig.CODE_URL %
-        (config.DevConfig.appID, url, 'snsapi_userinfo', 'STATE'))
         if code:
             url = wx_models.get_wx_permission(code)
             return redirect(url % ('admin'))
