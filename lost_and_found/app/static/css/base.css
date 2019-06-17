@@ -132,7 +132,7 @@ body{
 .content-list{
     width: 100%;
     float: left;
-    margin: 10px ;
+    margin: auto ;
 }
 .triangle{
     background-color: #ffffff;
