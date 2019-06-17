@@ -54,7 +54,7 @@ $(function () {
                         setTimeout(function () {
                             $('.reset').trigger("click");
                         }, 3000);
-                        lock = true;
+                        lock = false;
                         // 提交成功删除文本内容，防止重复提交
                     } else {
                         // 失败，显示后端信息
