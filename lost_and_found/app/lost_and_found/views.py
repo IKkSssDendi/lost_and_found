@@ -36,6 +36,9 @@ def index():
 
     if request.method == 'POST':
         data = request.form.get('value')
+        data = ast.literal_eval(data)
+        id = data['id']
+        user_id = ['user_id']
         if bool(data['state']):
             return
         else:
