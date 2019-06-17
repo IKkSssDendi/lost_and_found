@@ -24,7 +24,8 @@ def get_wx_permission(code):
         refresh_token = content['refresh_token']
         openid = content['openid']
         scope = content['scope']
-        redis_store.setex(code,openid,300)
+        redis_store.setnx(code,openid)
+        redis_store.expire(code,300)
         data = get_user_data(access_token,openid)
         url = '/LostAndFound/%s' + '?openid=%s&nicknama=%s&sex=%s' % (openid,data['nickname'],data['sex'])
         return url
