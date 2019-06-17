@@ -5,6 +5,7 @@ from urllib.parse import quote
 from ..wx import wx_models
 from app import config, db
 import ast
+from app import redis_store
 
 
 @lost_and_found.route('/index', methods=('GET', 'POST'))
@@ -15,6 +16,14 @@ def index():
         nickname = request.args.get('nicknama')
         sex = request.args.get('nickname')
         url = quote(request.url)
+
+        if code:
+            if redis_store.exists(code):
+                openid = redis_store.mget(code)
+            else:
+                url = wx_models.get_wx_permission(code)
+                return redirect(url % ('index'))
+
         if openid:
             info = LostAndFound.get_main_list(LostAndFoundState.NORMAL, 30)
             info = reversed(info)
@@ -24,9 +33,6 @@ def index():
                                    sex=sex,
                                    appid=config.DevConfig.appID,
                                    info=info)
-        if code:
-            url = wx_models.get_wx_permission(code)
-            return redirect(url % ('index'))
 
         if openid is None:
             return redirect(
@@ -101,8 +107,12 @@ def admin():
             info = LostAndFound.query.filter_by(state=0).all()
             return render_template('admin.html', info=info, openid=openid)
         if code:
-            url = wx_models.get_wx_permission(code)
-            return redirect(url % ('admin'))
+            if redis_store.exists(code):
+                openid = redis_store.mget(code)
+            else:
+                url = wx_models.get_wx_permission(code)
+                return redirect(url % ('admin'))
+
 
         if openid is None:
             return redirect(

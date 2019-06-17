@@ -9,7 +9,7 @@
     {% for data in info %}
         <div class="content-list">
             <div class="app-content-img">
-                {% if data.lost_or_found == 'found' %}
+                {% if data.lost_or_found == "true" %}
                     <img class="content-img" src="{{url_for('static',filename='images/found.jpg')}}">
                 {% else %}
                     <img class="content-img" src="{{url_for('static',filename='images/lost.jpg')}}">
