@@ -6,8 +6,8 @@ class DevConfig():
     REDIS_URL = "redis://:@localhost:6379/0"
 
     TOKEN = 'LostAndFound'
-    appID = 'wxe3f666b225849411'
-    appSerect = '78748202610d44c853c011ad979e9bed'
+    appID = ''
+    appSerect = ''
     BASE_ACCESS_TOKEN_URL = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=%s&appid=%s&secret=%s'
     CODE_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=%s#wechat_redirect'
     ACCESS_TOKEN_URL = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code'
