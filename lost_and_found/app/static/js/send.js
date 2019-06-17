@@ -5,7 +5,7 @@ $(function () {
             return;
         }
         lock = true;
-        var state = $('.state').is(":checked");
+        var state = $('input:radio:checked').val();
         var article_name = $('#article').val().replace(/\s+/g, '');
         var receive_name = $('#receive_name').val().replace(/\s+/g, '');
         var send_name = $('#send_name').val().replace(/\s+/g, '');
