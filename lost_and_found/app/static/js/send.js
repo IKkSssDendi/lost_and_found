@@ -5,7 +5,7 @@ $(function () {
             return;
         }
         lock = true;
-        var state = $('input:radio:checked').val();
+        var state = $('.state').is(":checked");
         var article_name = $('#article').val().replace(/\s+/g, '');
         var receive_name = $('#receive_name').val().replace(/\s+/g, '');
         var send_name = $('#send_name').val().replace(/\s+/g, '');
@@ -52,10 +52,10 @@ $(function () {
                         weui.toast(res.msg, 3000);
                         //成功跳转
                         setTimeout(function () {
-                            $('.reset').trigger("click");
+                            $('top-button').trigger("click");
                         }, 3000);
-                        lock = false;
                         // 提交成功删除文本内容，防止重复提交
+                        $('.reset').trigger("click");
                     } else {
                         // 失败，显示后端信息
                         weui.alert(res.msg);
@@ -77,11 +77,3 @@ $(function () {
 
     });
 });
-
-$(function(){
-    $('.reset').click(function () {
-        $('#lost').checked=false;
-        $('#found').checked=false;
-        $('.app-conetnt-form-textbox').val("");
-    });
-})

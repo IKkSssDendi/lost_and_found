@@ -45,11 +45,6 @@ body{
     height: 60px;
     width: 80px;
 }
-.app-footter{
-    float: left;
-    width: 100%;
-    height: 20px;;
-}
 /* release.html */
 .top-button{
     background-color: #f44336;
@@ -66,8 +61,8 @@ body{
 .app-release-bar {
     width: 100%;
     height: 45px;
-    float: left;
     background: #cccccc;
+    border: solid #eeeeee 1px;
 }
 .app-release-title{
     font-family: 华文细黑;
@@ -76,27 +71,32 @@ body{
     margin: 9px 0 0 15px;
 }
 .release-select{
-    width: 100%;
-    float: left;
-    margin:0.5% 0.5% 1%  1%;
+    margin: 15px 0px 5px 25px;
 }
 .state{
     font-family: 微软雅黑;
     font-size: 16px;
 }
 .app-conetnt-form-title{
-    float: left;
-    margin: 0.5% 0.5% 1%  1%;
+    margin: 15px 0px 5px 25px;
     font-family: 微软雅黑;
     font-size: 16px;
 }
 .app-conetnt-form-textbox{
-    margin: 0.5% 0.5% 1%  1%;
-    border: 1px solid #F1F2F3;
+    margin: 5px 0px 15px 25px;
 }
 .app-content-button{
-    float: left;
-    margin: 0.5% 0.5% 1%  1%;
+    margin: 15px 0px 5px 25px;
+}
+.app-content-botton-button{
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .submitBtn{
     float: left;
@@ -106,7 +106,7 @@ body{
     border: none;
     display: inline-block;
     text-align: center;
-    margin: 0 20px 0 0;
+    margin: 0 10px 0 0;
     padding: 0 10px 0 10px;
     border-radius: 12px;
 }
@@ -126,13 +126,12 @@ body{
     background-color: #F1F3F5;
     width: 100%;
     height: 100%;
-    padding: 20px;
-;
+    float: left;
 }
 .content-list{
-    width: 95%;
+    width: 100%;
     float: left;
-    margin: auto ;
+    margin: 10px ;
 }
 .triangle{
     background-color: #ffffff;
@@ -145,6 +144,7 @@ body{
     left:-8px;
     top:24px;
 }
+/*.app-content-text*/
 .app-content-img{
     float: left;
     width: 45px;
@@ -221,4 +221,3 @@ body{
     margin: 0 0 0 10px;
     border-radius: 12px;
 }
-
