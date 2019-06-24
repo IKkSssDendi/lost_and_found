@@ -84,6 +84,11 @@ body{
 }
 .app-conetnt-form-textbox{
     margin: 5px 0px 15px 25px;
+    border: 1px solid #F1F2F3;
+    overflow: scroll;
+    height: 30px;
+    width: 75%;
+
 }
 .app-content-button{
     margin: 15px 0px 5px 25px;
