@@ -152,7 +152,7 @@ body{
 /*.app-content-text*/
 .app-content-img{
     float: left;
-    width: 45px;
+    width: 15%;
     display: table-cell;
     text-align: center;
 }
@@ -215,6 +215,7 @@ body{
     border-style: solid solid ;
 }
 .submitResult{
+
     font-family:微软雅黑;
     font-size: 15px;
     background-color: #DDECEE;
