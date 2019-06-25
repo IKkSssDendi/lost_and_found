@@ -51,6 +51,7 @@ body{
     border-radius: 4px;
     color: white;
     font-size: 15px;
+    float: left;
     font-family:宋体;
     text-align: center;
     display: inline-block;
@@ -81,13 +82,12 @@ body{
     font-family: 微软雅黑;
     font-size: 16px;
 }
-/* 用百分比！ */
 .app-conetnt-form-textbox{
-    margin: 5px 0px 15px 25px;   /*用*/
+    margin: 5px 0px 15px 25px;
     border: 1px solid #F1F2F3;
     overflow: scroll;
     height: 30px;
-    width: 80%;
+    width: 75%;
 
 }
 .app-content-button{
@@ -104,7 +104,7 @@ body{
     font-size: 16px;
 }
 .submitBtn{
-    
+    float: left;
     font-family:微软雅黑;
     font-size: 20px;
     background-color: #DDECEE;
@@ -116,7 +116,7 @@ body{
     border-radius: 12px;
 }
 .reset{
-    
+    float: left;
     font-family:微软雅黑;
     font-size: 20px;
     background-color: #DDECEE;
@@ -152,7 +152,7 @@ body{
 /*.app-content-text*/
 .app-content-img{
     float: left;
-    width: 15%;
+    width: 45px;
     display: table-cell;
     text-align: center;
 }
@@ -215,7 +215,7 @@ body{
     border-style: solid solid ;
 }
 .submitResult{
-
+    float: right;
     font-family:微软雅黑;
     font-size: 15px;
     background-color: #DDECEE;
